@@ -1,0 +1,49 @@
+.account-menu {
+  position: fixed;
+  top: 80px;
+  right: 2rem;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a0a2e 100%);
+  border: 2px solid #ff00ff;
+  border-radius: 12px;
+  padding: 1rem;
+  min-width: 250px;
+  box-shadow: 0 5px 30px rgba(255, 0, 255, 0.4);
+  z-index: 1000;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.account-menu-item {
+  width: 100%;
+  background: transparent;
+  border: 2px solid #00f3ff;
+  color: #00f3ff;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-align: left;
+  margin-bottom: 0.75rem;
+}
+
+.account-menu-item:last-child {
+  margin-bottom: 0;
+}
+
+.account-menu-item:hover {
+  background: rgba(0, 243, 255, 0.1);
+  box-shadow: 0 0 15px rgba(0, 243, 255, 0.5);
+  transform: scale(1.02);
+}

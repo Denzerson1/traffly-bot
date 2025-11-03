@@ -1,0 +1,239 @@
+.buyer-options-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a0a2e 50%, #0a0a0a 100%);
+  color: #ffffff;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.buyer-options-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 0, 255, 0.03) 0px,
+      transparent 1px,
+      transparent 40px,
+      rgba(255, 0, 255, 0.03) 41px
+    );
+  pointer-events: none;
+}
+
+.buyer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid rgba(0, 243, 255, 0.3);
+  backdrop-filter: blur(10px);
+  z-index: 10;
+  position: relative;
+}
+
+.buyer-header .logo-text {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  color: #00f3ff;
+  text-shadow: 
+    0 0 10px #00f3ff,
+    0 0 20px #00a8ff;
+}
+
+.buyer-header .logo-text.clickable {
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.buyer-header .logo-text.clickable:hover {
+  transform: scale(1.05);
+  text-shadow: 
+    0 0 15px #00f3ff,
+    0 0 30px #00a8ff,
+    0 0 45px #00a8ff;
+}
+
+.buyer-header .header-icons {
+  display: flex;
+  gap: 1rem;
+}
+
+.buyer-header .icon-btn {
+  background: transparent;
+  border: 2px solid #ff00ff;
+  color: #ff00ff;
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.buyer-header .icon-btn:hover {
+  box-shadow: 0 0 15px rgba(255, 0, 255, 0.6);
+  transform: scale(1.05);
+}
+
+.buyer-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 2rem;
+  z-index: 1;
+  position: relative;
+}
+
+.options-title {
+  font-size: 2rem;
+  color: #00f3ff;
+  text-shadow: 
+    0 0 10px #00f3ff,
+    0 0 20px #00a8ff;
+  margin: 0 0 3rem 0;
+  text-align: center;
+}
+
+.options-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  max-width: 800px;
+  width: 100%;
+}
+
+.option-card {
+  background: rgba(0, 0, 0, 0.5);
+  border: 2px solid #00f3ff;
+  border-radius: 12px;
+  padding: 3rem 2rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-align: center;
+  min-height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.option-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 243, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.option-card:hover::before {
+  left: 100%;
+}
+
+.option-card:hover {
+  background: rgba(0, 243, 255, 0.1);
+  border-color: #ffffff;
+  box-shadow: 
+    0 0 20px rgba(0, 243, 255, 0.5),
+    inset 0 0 20px rgba(0, 243, 255, 0.1);
+  transform: translateY(-5px);
+  color: #00f3ff;
+  text-shadow: 0 0 10px rgba(0, 243, 255, 0.8);
+}
+
+.buyer-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 2rem;
+  border-top: 1px solid rgba(0, 243, 255, 0.3);
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  z-index: 10;
+  position: relative;
+}
+
+.footer-link {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.3s;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+}
+
+.footer-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #ff00ff;
+  transition: width 0.3s;
+  box-shadow: 0 0 10px #ff00ff;
+}
+
+.footer-link:hover::after {
+  width: 100%;
+}
+
+.footer-link:hover {
+  color: #ff00ff;
+  text-shadow: 0 0 10px rgba(255, 0, 255, 0.8);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .options-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .option-card {
+    padding: 2rem 1.5rem;
+    min-height: 120px;
+    font-size: 1.1rem;
+  }
+
+  .options-title {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .buyer-content {
+    padding: 2rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .buyer-header {
+    padding: 1rem;
+  }
+
+  .footer-link {
+    font-size: 0.75rem;
+  }
+
+  .buyer-footer {
+    gap: 1rem;
+    padding: 1.5rem 1rem;
+  }
+}

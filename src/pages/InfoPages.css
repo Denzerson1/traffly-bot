@@ -1,0 +1,240 @@
+.info-page-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a0a2e 50%, #0a0a0a 100%);
+  color: #ffffff;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.info-page-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    repeating-linear-gradient(
+      0deg,
+      rgba(0, 243, 255, 0.03) 0px,
+      transparent 1px,
+      transparent 40px,
+      rgba(0, 243, 255, 0.03) 41px
+    );
+  pointer-events: none;
+}
+
+.info-header {
+  padding: 2rem;
+  border-bottom: 2px solid rgba(0, 243, 255, 0.3);
+  backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 10;
+}
+
+.back-btn {
+  background: transparent;
+  border: 2px solid #ff00ff;
+  color: #ff00ff;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-bottom: 1rem;
+}
+
+.back-btn:hover {
+  background: rgba(255, 0, 255, 0.1);
+  box-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
+}
+
+.info-title {
+  font-size: 2.5rem;
+  color: #00f3ff;
+  text-shadow: 
+    0 0 10px #00f3ff,
+    0 0 20px #00a8ff;
+  margin: 0;
+}
+
+.info-content {
+  flex: 1;
+  padding: 3rem 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* FAQ Styles */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.faq-item {
+  background: rgba(0, 243, 255, 0.05);
+  border: 2px solid rgba(0, 243, 255, 0.3);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all 0.3s;
+}
+
+.faq-item:hover {
+  background: rgba(0, 243, 255, 0.1);
+  border-color: #00f3ff;
+  box-shadow: 0 0 20px rgba(0, 243, 255, 0.2);
+}
+
+.faq-question {
+  color: #00f3ff;
+  font-size: 1.3rem;
+  margin: 0 0 1rem 0;
+  text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+}
+
+.faq-answer {
+  color: #d0d0d0;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* About Us Styles */
+.about-section {
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0.3);
+  border: 2px solid rgba(255, 0, 255, 0.3);
+  border-radius: 12px;
+}
+
+.about-section h2 {
+  color: #ff00ff;
+  font-size: 1.8rem;
+  margin: 0 0 1rem 0;
+  text-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
+}
+
+.about-section p {
+  color: #d0d0d0;
+  line-height: 1.8;
+  margin: 0;
+}
+
+.benefits-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.benefits-list li {
+  color: #ffffff;
+  padding: 0.75rem 0;
+  padding-left: 2rem;
+  position: relative;
+  line-height: 1.6;
+}
+
+.benefits-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #00f3ff;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+/* User Instructions Styles */
+.instructions-intro {
+  text-align: center;
+  margin-bottom: 3rem;
+  font-size: 1.2rem;
+  color: #d0d0d0;
+}
+
+.instruction-step {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  background: rgba(0, 243, 255, 0.05);
+  border: 2px solid rgba(0, 243, 255, 0.3);
+  border-radius: 12px;
+  padding: 2rem;
+  transition: all 0.3s;
+}
+
+.instruction-step:hover {
+  background: rgba(0, 243, 255, 0.1);
+  border-color: #00f3ff;
+  box-shadow: 0 0 20px rgba(0, 243, 255, 0.2);
+  transform: translateX(5px);
+}
+
+.step-number {
+  width: 60px;
+  height: 60px;
+  min-width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #ff00ff, #00f3ff);
+  border-radius: 50%;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #000;
+  box-shadow: 0 0 20px rgba(0, 243, 255, 0.5);
+}
+
+.step-content h3 {
+  color: #00f3ff;
+  font-size: 1.4rem;
+  margin: 0 0 0.5rem 0;
+  text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+}
+
+.step-content p {
+  color: #d0d0d0;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.tips-section {
+  margin-top: 4rem;
+  padding: 2rem;
+  background: rgba(255, 0, 255, 0.05);
+  border: 2px solid rgba(255, 0, 255, 0.3);
+  border-radius: 12px;
+}
+
+.tips-section h3 {
+  color: #ff00ff;
+  font-size: 1.5rem;
+  margin: 0 0 1.5rem 0;
+  text-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
+}
+
+.tips-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tips-section li {
+  color: #d0d0d0;
+  padding: 0.75rem 0;
+  padding-left: 2rem;
+  position: relative;
+  line-height: 1.6;
+}
+
+.tips-section li::before {
+  content: '💡';
+  position: absolute;
+  left: 0;
+  font-size: 1.2rem;
+}

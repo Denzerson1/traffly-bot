@@ -1,0 +1,39 @@
+/* Footer styles copied from BuyerOptions.css to reuse across pages */
+.buyer-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 2rem;
+  border-top: 1px solid rgba(0, 243, 255, 0.3);
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  z-index: 10;
+  position: relative;
+}
+
+.footer-link {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.3s;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+}
+
+.footer-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #ff00ff;
+  transition: width 0.3s;
+  box-shadow: 0 0 10px #ff00ff;
+}
+
+.footer-link:hover::after { width: 100%; }
+.footer-link:hover { color: #ff00ff; text-shadow: 0 0 10px rgba(255, 0, 255, 0.8); }

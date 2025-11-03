@@ -1,0 +1,111 @@
+.creative-flow {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto auto auto;
+  grid-template-columns: 1fr;
+  align-items: center;
+  justify-items: center;
+  gap: 1.75rem;
+  margin-bottom: 2rem;
+}
+
+.flow-box {
+  background: rgba(0, 0, 0, 0.5);
+  border: 2px solid #00f3ff;
+  color: #ffffff;
+  border-radius: 12px;
+  padding: 1.2rem 1.75rem;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 0.5px;
+  box-shadow: 0 0 20px rgba(0, 243, 255, 0.25);
+  backdrop-filter: blur(10px);
+}
+
+.flow-box.main {
+  min-width: 220px;
+}
+
+.flow-box.small {
+  min-width: 140px;
+  border-color: #ff00ff;
+  box-shadow: 0 0 20px rgba(255, 0, 255, 0.25);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.flow-box.mid {
+  min-width: 260px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.flow-box.small:hover, .flow-box.mid:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 25px rgba(0, 243, 255, 0.35), 0 0 25px rgba(255, 0, 255, 0.25);
+}
+
+.flow-branches {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  width: 100%;
+}
+
+/* Connecting lines */
+.flow-lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.line {
+  position: absolute;
+  background: linear-gradient(180deg, #00f3ff, rgba(0, 243, 255, 0.2));
+  box-shadow: 0 0 10px rgba(0, 243, 255, 0.6);
+}
+
+/* Vertical line from main to mid */
+.line.vertical {
+  width: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 84px;
+  bottom: 60px; /* extend to touch the Plinko box */
+}
+
+/* Diagonal left and right from main to small boxes */
+.line.left,
+.line.right {
+  height: 2px;
+  width: 34%;
+  top: 160px;
+}
+.line.left { left: 16%; transform: rotate(10deg); }
+.line.right { right: 16%; transform: rotate(-10deg); }
+
+/* Notes section under flow */
+.note-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.note-box {
+  background: rgba(0, 243, 255, 0.05);
+  color: #ffffff;
+  border: 2px solid rgba(0, 243, 255, 0.3);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  box-shadow: 0 0 15px rgba(0, 243, 255, 0.15);
+  backdrop-filter: blur(10px);
+}
+
+@media (max-width: 700px) {
+  .flow-box.main { min-width: 200px; }
+  .flow-box.mid { min-width: 220px; }
+  .flow-branches { gap: 1rem; }
+  .line.left, .line.right { width: 40%; top: 170px; }
+}

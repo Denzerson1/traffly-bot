@@ -1,0 +1,147 @@
+.bmw-showcase {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem;
+  width: 100%;
+  max-width: 500px;
+}
+
+.car-display {
+  width: 100%;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 16px;
+  border: 2px solid rgba(0, 243, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.car-display::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  animation: shine 3s infinite;
+}
+
+@keyframes shine {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+.car-model {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 2rem;
+  border: 3px solid;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  animation: carRollOut 2s ease-out;
+}
+
+@keyframes carRollOut {
+  0% {
+    transform: translateX(-200%) scale(0.5);
+    opacity: 0;
+  }
+  60% {
+    transform: translateX(10%) scale(1.05);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.headlights {
+  display: flex;
+  gap: 3rem;
+  animation: blinkHeadlights 2s infinite;
+}
+
+@keyframes blinkHeadlights {
+  0%, 45%, 55%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+.headlight {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  box-shadow: 
+    0 0 10px currentColor,
+    0 0 20px currentColor,
+    0 0 30px currentColor;
+  animation: pulse 1s infinite alternate;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 
+      0 0 10px currentColor,
+      0 0 20px currentColor,
+      0 0 30px currentColor;
+  }
+  100% {
+    box-shadow: 
+      0 0 20px currentColor,
+      0 0 40px currentColor,
+      0 0 60px currentColor;
+  }
+}
+
+.car-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.car-text {
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 
+    0 0 10px currentColor,
+    0 0 20px currentColor;
+}
+
+.level-badge {
+  padding: 0.5rem 1.5rem;
+  border: 2px solid;
+  border-radius: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  text-shadow: 0 0 10px currentColor;
+  box-shadow: 0 0 20px currentColor;
+}
+
+.deposits-count {
+  color: #a0a0a0;
+  font-size: 0.9rem;
+  margin: 0;
+}
