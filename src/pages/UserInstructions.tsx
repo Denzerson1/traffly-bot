@@ -1,14 +1,14 @@
 import { useNavigate } from 'react-router-dom'
 import './InfoPages.css'
+import TopNav from '../components/TopNav'
+import SiteFooter from '../components/SiteFooter'
 
 function UserInstructions() {
   const navigate = useNavigate()
 
   return (
     <div className="info-page-container">
-      <header className="info-header">
-        <h1 className="info-title">User Instructions</h1>
-      </header>
+      <TopNav />
 
       <div className="info-content">
         <button className="back-btn" onClick={() => navigate('/dashboard')}>← Back</button>
@@ -74,6 +74,8 @@ function UserInstructions() {
           </ul>
         </div>
       </div>
+
+      <SiteFooter />
     </div>
   )
 }
