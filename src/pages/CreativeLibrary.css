@@ -1,15 +1,16 @@
 .creative-flow {
   position: relative;
   display: grid;
-  grid-template-rows: auto auto auto;
+  grid-template-rows: auto 36px auto 44px auto; /* main, conn1, branches, conn2, plinko */
   grid-template-columns: 1fr;
   align-items: center;
   justify-items: center;
-  gap: 1.75rem;
+  gap: 0.75rem;
   margin-bottom: 2rem;
 }
 
 .flow-box {
+  position: relative;
   background: rgba(0, 0, 0, 0.5);
   border: 2px solid #00f3ff;
   color: #ffffff;
@@ -20,6 +21,8 @@
   letter-spacing: 0.5px;
   box-shadow: 0 0 20px rgba(0, 243, 255, 0.25);
   backdrop-filter: blur(10px);
+  z-index: 1;
+  overflow: hidden;
 }
 
 .flow-box.main {
@@ -28,11 +31,11 @@
 
 .flow-box.small {
   min-width: 140px;
-  border-color: #ff00ff;
-  box-shadow: 0 0 20px rgba(255, 0, 255, 0.25);
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
 }
+.flow-box.small-left { border-color: #ff00ff; box-shadow: 0 0 20px rgba(255, 0, 255, 0.35); }
+.flow-box.small-right { border-color: #00ffa3; box-shadow: 0 0 20px rgba(0, 255, 163, 0.35); }
 
 .flow-box.mid {
   min-width: 260px;
@@ -42,50 +45,70 @@
 
 .flow-box.small:hover, .flow-box.mid:hover {
   transform: translateY(-2px);
-  box-shadow: 0 0 25px rgba(0, 243, 255, 0.35), 0 0 25px rgba(255, 0, 255, 0.25);
+  box-shadow: 0 0 28px rgba(0, 243, 255, 0.45), 0 0 20px rgba(255, 0, 255, 0.3);
 }
 
+/* Casino‑like sheen like Offers */
+.flow-box.small::after, .flow-box.mid::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -120%;
+  width: 60%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.55s ease;
+}
+.flow-box.small:hover::after, .flow-box.mid:hover::after { left: 140%; }
+.flow-box.small:active, .flow-box.mid:active { box-shadow: inset 0 0 22px rgba(0, 243, 255, 0.45); transform: translateY(0); }
+
 .flow-branches {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
   width: 100%;
 }
-
-/* Connecting lines */
-.flow-lines {
+/* spine between the two top buttons */
+.flow-branches::before {
+  content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  pointer-events: none;
+  left: 50%; transform: translateX(-50%);
+  top: -8px; bottom: -8px; width: 2px; background: #00f3ff;
+  box-shadow: 0 0 10px rgba(0,243,255,0.9), 0 0 16px rgba(0,243,255,0.5);
+  z-index: 0;
 }
 
-.line {
-  position: absolute;
-  background: linear-gradient(180deg, #00f3ff, rgba(0, 243, 255, 0.2));
-  box-shadow: 0 0 10px rgba(0, 243, 255, 0.6);
+/* Connector rows */
+.conn { position: relative; width: 100%; height: 36px; }
+.conn.v2 { height: 44px; }
+
+/* Vertical spine handled by branches; keep v1 silent to avoid gaps */
+.conn.v1::before { content: ''; height: 0; }
+
+/* Vertical spine that runs through and between the two buttons */
+.flow-branches::before {
+  content: '';
+  position: absolute; left: 50%; transform: translateX(-50%);
+  top: -36px; bottom: -8px; width: 2px;
+  background: rgba(0,243,255,0.35);
+  box-shadow: 0 0 6px rgba(0,243,255,0.35);
+  z-index: 0;
 }
 
-/* Vertical line from main to mid */
-.line.vertical {
-  width: 2px;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 84px;
-  bottom: 60px; /* extend to touch the Plinko box */
+/* Horizontal line under branches (solid, darker) */
+.conn.v2::before {
+  content: '';
+  position: absolute; left: 8%; right: 8%; top: 0; height: 2px;
+  background: rgba(0,243,255,0.35);
+  box-shadow: 0 0 4px rgba(0,243,255,0.25);
 }
-
-/* Diagonal left and right from main to small boxes */
-.line.left,
-.line.right {
-  height: 2px;
-  width: 34%;
-  top: 160px;
+/* Vertical down to plinko; overlap by 1px to remove break */
+.conn.v2::after {
+  content: '';
+  position: absolute; left: 50%; transform: translateX(-50%);
+  top: -1px; height: 100%; width: 2px; background: rgba(0,243,255,0.35);
+  box-shadow: 0 0 4px rgba(0,243,255,0.25);
 }
-.line.left { left: 16%; transform: rotate(10deg); }
-.line.right { right: 16%; transform: rotate(-10deg); }
 
 /* Notes section under flow */
 .note-grid {
@@ -104,8 +127,12 @@
 }
 
 @media (max-width: 700px) {
+  .creative-flow { grid-template-rows: auto 28px auto 36px auto; gap: 0.5rem; }
   .flow-box.main { min-width: 200px; }
   .flow-box.mid { min-width: 220px; }
   .flow-branches { gap: 1rem; }
-  .line.left, .line.right { width: 40%; top: 170px; }
+  .conn { height: 28px; }
+  .conn.v2 { height: 36px; }
+  .conn.v2::before { left: 4%; right: 4%; }
+  .flow-branches::before { top: -28px; bottom: -6px; }
 }

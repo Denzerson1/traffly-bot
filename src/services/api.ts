@@ -122,3 +122,35 @@ export async function fetchStatistics(): Promise<StatRow[]> {
     return mock
   }
 }
+
+// Reviews types and API
+export interface Review {
+  id: string
+  text: string
+  createdAt?: string
+}
+
+export async function fetchReviews(): Promise<Review[]> {
+  try {
+    const res = await fetch(`${API_BASE_URL}/reviews`)
+    if (!res.ok) throw new Error(`Failed to fetch reviews: ${res.status}`)
+    const data = await res.json()
+    return data as Review[]
+  } catch (error) {
+    console.error('Error fetching reviews:', error)
+    // Fallback, editable list pre-created by admins
+    const fallback: Review[] = [
+      { id: '1', text: 'Great ROI and clear tracking. Will scale with Traffly.' },
+      { id: '2', text: 'Fast payouts and helpful support — solid experience.' },
+      { id: '3', text: 'Simple setup, links worked perfectly for my campaigns.' },
+      { id: '4', text: 'Quality traffic sources, conversions were consistent.' },
+      { id: '5', text: 'Dashboard is clean, love the weekly stats refresh.' },
+      { id: '6', text: 'Creative library saved me hours — ready-to-run assets.' },
+      { id: '7', text: 'Referral bonus is a nice touch — invites converted.' },
+      { id: '8', text: 'Transparent reporting and no hidden BS. Recommended.' },
+      { id: '9', text: 'Had an issue — support fixed it within minutes.' },
+      { id: '10', text: 'Scaling beyond expectations. Will keep pushing volume.' },
+    ]
+    return fallback
+  }
+}

@@ -40,50 +40,84 @@
   background: rgba(0, 0, 0, 0.45);
   border: 2px solid #00f3ff;
   border-radius: 12px;
-  overflow: hidden;
+  overflow: hidden; /* keep wrapper fixed; scroll only inner */
   box-shadow: 0 5px 30px rgba(0, 243, 255, 0.25);
   backdrop-filter: blur(10px);
 }
 
 .table-scroll {
+  display: block;
   width: 100%;
+  max-width: 100%;
   overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch; /* smooth iOS scroll */
+  overscroll-behavior-x: contain;
 }
 
 .stats-table {
   width: 100%;
+  min-width: 640px; /* enable horizontal scroll on small screens */
   border-collapse: collapse;
+  table-layout: fixed; /* consistent column widths and tfoot alignment */
   color: #ffffff;
 }
 
 .stats-table thead th {
   background: linear-gradient(180deg, rgba(0, 243, 255, 0.15) 0%, rgba(0, 243, 255, 0.05) 100%);
-  text-align: left;
-  padding: 0.75rem 1rem;
+  text-align: center;
+  padding: 0.9rem 1.1rem;
   border-bottom: 2px solid rgba(0, 243, 255, 0.3);
   white-space: nowrap;
   color: #00f3ff;
   text-shadow: 0 0 10px rgba(0, 243, 255, 0.6);
+  font-size: 1.02rem;
 }
 
-.stats-table tbody tr {
-  transition: background 0.25s, transform 0.2s;
+@media (max-width: 768px) {
+  .stats-table { min-width: auto; }
+  .stats-table thead th, .stats-table tbody td, .stats-table tfoot td { padding: 0.6rem 0.55rem; font-size: 0.95rem; }
 }
 
+/* Fit table fully on small phones (no clipping dates) */
+
+/* Title style */
+.page-title { font-size: 1.7rem; color: #00f3ff; text-shadow: 0 0 10px #00f3ff, 0 0 20px #00a8ff; margin: 0 0 0.75rem 0; text-align: center; }
+@media (max-width: 480px) {
+  .stats-table { min-width: auto; table-layout: fixed; width: 100%; }
+  .stats-table thead th, .stats-table tbody td, .stats-table tfoot td {
+    padding: 0.55rem 0.4rem;
+    font-size: 0.95rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .stats-table thead th:first-child,
+  .stats-table tbody td:first-child,
+  .stats-table tfoot td:first-child {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+  }
+}
 .stats-table tbody tr:hover {
   background: rgba(255, 0, 255, 0.06);
 }
 
 .stats-table tbody td {
-  padding: 0.75rem 1rem;
+  padding: 0.85rem 1.1rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  text-align: center;
+  font-size: 1rem;
 }
 
-.stats-table tfoot th {
+.stats-table tfoot td {
   padding: 0.75rem 1rem;
   border-top: 2px solid rgba(255, 0, 255, 0.35);
   background: rgba(255, 0, 255, 0.08);
   color: #ffffff;
+  text-align: center;
+  font-weight: 700;
 }
 
 .stats-loading, .stats-error {

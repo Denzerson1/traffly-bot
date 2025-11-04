@@ -5,7 +5,7 @@
   background: linear-gradient(135deg, #0a0a0a 0%, #1a0a2e 50%, #0a0a0a 100%);
   color: #ffffff;
   position: relative;
-  overflow-x: hidden;
+  overflow-x: hidden; /* keep page width fixed */
 }
 
 .info-page-container::before {
@@ -35,6 +35,11 @@
 }
 
 .back-btn {
+  position: sticky;
+  top: 88px; /* sits below navbar, reserves space (no overlap) */
+  align-self: flex-start;
+  margin-bottom: 1rem;
+
   background: transparent;
   border: 2px solid #ff00ff;
   color: #ff00ff;
@@ -44,12 +49,15 @@
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s;
-  margin-bottom: 1rem;
 }
 
 .back-btn:hover {
   background: rgba(255, 0, 255, 0.1);
   box-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
+}
+
+@media (max-width: 480px) {
+  .back-btn { top: 72px; }
 }
 
 .info-title {

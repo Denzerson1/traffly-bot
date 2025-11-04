@@ -26,20 +26,18 @@ function CreativeLibrary() {
         <section className="creative-flow">
           <div className="flow-box main">Creative<br/>Library</div>
 
-          <div className="flow-lines">
-            <span className="line vertical" aria-hidden></span>
-            <span className="line left" aria-hidden></span>
-            <span className="line right" aria-hidden></span>
-          </div>
+          <div className="conn v1" aria-hidden></div>
 
           <div className="flow-branches">
-            <button className="flow-box small" onClick={() => open(CHICKEN_URL)}>
+            <button className="flow-box small small-left" onClick={() => open(CHICKEN_URL)}>
               Chicken<br/>Road
             </button>
-            <button className="flow-box small" onClick={() => open(OTHER_URL)}>
+            <button className="flow-box small small-right" onClick={() => open(OTHER_URL)}>
               Other
             </button>
           </div>
+
+          <div className="conn v2" aria-hidden></div>
 
           <button className="flow-box mid" onClick={() => open(PLINKO_URL)}>
             Plinko

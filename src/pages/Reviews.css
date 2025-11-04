@@ -1,0 +1,57 @@
+/* Flow layout */
+.reviews-flow {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-template-columns: 1fr;
+  align-items: center;
+  justify-items: center;
+  gap: 1.25rem;
+  margin-bottom: 1.75rem;
+}
+
+.flow-box {
+  background: rgba(0, 0, 0, 0.5);
+  border: 2px solid #00f3ff;
+  color: #ffffff;
+  border-radius: 12px;
+  padding: 1.2rem 1.75rem;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 0.5px;
+  box-shadow: 0 0 20px rgba(0, 243, 255, 0.25);
+  backdrop-filter: blur(10px);
+}
+
+.flow-box.main { min-width: 200px; }
+
+/* Vertical connectors */
+.vline {
+  position: absolute;
+  left: 50%;
+  width: 2px;
+  transform: translateX(-50%);
+  background: linear-gradient(180deg, #00f3ff, rgba(0, 243, 255, 0.2));
+  box-shadow: 0 0 10px rgba(0, 243, 255, 0.6);
+}
+.vline.top { top: 84px; height: 160px; }
+
+/* Reviews list */
+.reviews-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.review-card {
+  background: rgba(0, 243, 255, 0.05);
+  color: #ffffff;
+  border: 2px solid rgba(0, 243, 255, 0.3);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  box-shadow: 0 0 15px rgba(0, 243, 255, 0.15);
+  backdrop-filter: blur(10px);
+}
+
+@media (max-width: 700px) {
+  .vline.top { height: 140px; }
+}

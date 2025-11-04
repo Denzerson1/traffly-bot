@@ -1,27 +1,74 @@
 import { useNavigate } from 'react-router-dom'
 import './InfoPages.css'
+import './Offers.css'
+import TopNav from '../components/TopNav'
+import SiteFooter from '../components/SiteFooter'
+
+const links = {
+  Parik24: import.meta.env.VITE_OFFER_PARIK24 ?? '#',
+  SuperGra: import.meta.env.VITE_OFFER_SUPERGRA ?? '#',
+  SlotCity: import.meta.env.VITE_OFFER_SLOTCITY ?? '#',
+  Gorila: import.meta.env.VITE_OFFER_GORILA ?? '#',
+  Betking: import.meta.env.VITE_OFFER_BETKING ?? '#',
+  Beton: import.meta.env.VITE_OFFER_BETON ?? '#',
+  FirstCasino: import.meta.env.VITE_OFFER_FIRSTCASINO ?? '#',
+  '777Casino': import.meta.env.VITE_OFFER_777CASINO ?? '#',
+} as const
+
+type OfferName = keyof typeof links
 
 function Offers() {
   const navigate = useNavigate()
 
+  const open = (name: OfferName) => {
+    const url = links[name]
+    if (!url || url === '#') return
+    window.open(url, '_blank')
+  }
+
+  const items: OfferName[] = [
+    'Parik24', 'SuperGra',
+    'SlotCity', 'Gorila',
+    'Betking', 'Beton',
+    'FirstCasino', '777Casino',
+  ]
+
   return (
     <div className="info-page-container">
-      <header className="info-header">
-        <h1 className="info-title">Offers</h1>
-      </header>
+      <TopNav />
 
       <div className="info-content">
         <button className="back-btn" onClick={() => navigate('/buyer-options')}>← Back</button>
-        <div className="about-section">
-          <h2>Coming Soon</h2>
-          <p style={{ textAlign: 'center', fontSize: '1.2rem', color: '#a0a0a0' }}>
-            Browse available offers and campaigns to promote.
-          </p>
-          <p style={{ textAlign: 'center', color: '#00f3ff', marginTop: '2rem', fontSize: '3rem' }}>
-            💎
-          </p>
-        </div>
+
+        <section className="offers-flow">
+          <div className="flow-box main">Offers</div>
+
+          <div className="flow-lines">
+            <span className="line row1 left" aria-hidden></span>
+            <span className="line row1 right" aria-hidden></span>
+            <span className="line row2 left" aria-hidden></span>
+            <span className="line row2 right" aria-hidden></span>
+            <span className="line row3 left" aria-hidden></span>
+            <span className="line row3 right" aria-hidden></span>
+            <span className="line row4 left" aria-hidden></span>
+            <span className="line row4 right" aria-hidden></span>
+          </div>
+
+          <div className="offers-grid">
+            {items.map((name) => (
+              <button key={name} className="flow-box offer fancy" onClick={() => open(name)}>
+                {name}
+              </button>
+            ))}
+          </div>
+        </section>
+
+        <p className="page-explainer">
+          Explore active offers and jump directly to their destinations. Buttons open the configured links (set via VITE_OFFER_*).
+        </p>
       </div>
+
+      <SiteFooter />
     </div>
   )
 }

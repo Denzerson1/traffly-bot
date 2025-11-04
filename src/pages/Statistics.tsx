@@ -49,17 +49,12 @@ function Statistics() {
   }, [rows])
 
   return (
-    <div className="info-page-container">
+    <div className="info-page-container stats-page">
       <TopNav />
 
       <div className="info-content">
         <button className="back-btn" onClick={() => navigate('/buyer-options')}>← Back</button>
-
-        <section className="stats-notes">
-          <div className="note-box">
-            This page displays your performance metrics fetched from the PWA service and refreshed every 15 minutes.
-          </div>
-        </section>
+        <h2 className="page-title">Statistics</h2>
 
         <section className="stats-table-wrap">
           {loading && <div className="stats-loading">Loading statistics…</div>}
@@ -90,11 +85,11 @@ function Statistics() {
                 {rows.length > 0 && (
                   <tfoot>
                     <tr>
-                      <th>Total</th>
-                      <th>{totals.clicks.toLocaleString()}</th>
-                      <th>{totals.uniqueClicks.toLocaleString()}</th>
-                      <th>{totals.registrations.toLocaleString()}</th>
-                      <th>{totals.deposits.toLocaleString()}</th>
+                      <td className="total-cell">Total</td>
+                      <td className="total-cell">{totals.clicks.toLocaleString()}</td>
+                      <td className="total-cell">{totals.uniqueClicks.toLocaleString()}</td>
+                      <td className="total-cell">{totals.registrations.toLocaleString()}</td>
+                      <td className="total-cell">{totals.deposits.toLocaleString()}</td>
                     </tr>
                   </tfoot>
                 )}

@@ -1,0 +1,58 @@
+.offers-flow {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto auto auto;
+  grid-template-columns: 1fr;
+  align-items: center;
+  justify-items: center;
+  gap: 1.75rem;
+  margin-bottom: 2rem;
+}
+
+.flow-box {
+  background: rgba(0, 0, 0, 0.5);
+  border: 2px solid #00f3ff;
+  color: #ffffff;
+  border-radius: 12px;
+  padding: 1.2rem 1.75rem;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 0.5px;
+  box-shadow: 0 0 20px rgba(0, 243, 255, 0.25);
+  backdrop-filter: blur(10px);
+}
+
+.flow-box.main { min-width: 220px; }
+.flow-box.offer { min-width: 160px; cursor: pointer; transition: transform 0.18s, box-shadow 0.18s, filter 0.18s; position: relative; overflow: hidden; }
+.flow-box.offer:hover { transform: translateY(-2px); box-shadow: 0 0 28px rgba(0, 243, 255, 0.55), 0 0 20px rgba(255, 0, 255, 0.35); filter: saturate(1.25); }
+.flow-box.offer.fancy:active { transform: translateY(0); box-shadow: inset 0 0 22px rgba(0, 243, 255, 0.45); }
+.flow-box.offer::after { content: ''; position: absolute; top: 0; left: -120%; width: 60%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent); transform: skewX(-20deg); transition: left 0.55s ease; }
+.flow-box.offer:hover::after { left: 140%; }
+
+.offers-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem 2rem;
+  width: 100%;
+}
+
+/* Diagonal lines from main box to first-row offers (match Creative Library style) */
+.flow-lines { position: absolute; inset: 0; pointer-events: none; }
+.line { position: absolute; height: 2px; background: linear-gradient(90deg, #00f3ff, rgba(0, 243, 255, 0.2)); box-shadow: 0 0 10px rgba(0, 243, 255, 0.6); }
+.line.left, .line.right { width: 34%; }
+.line.left { left: 16%; transform: rotate(10deg); }
+.line.right { right: 16%; transform: rotate(-10deg); }
+
+/* Rows aligned to each pair in the grid */
+.line.row1 { top: 160px; }
+.line.row2 { top: 240px; }
+.line.row3 { top: 320px; }
+.line.row4 { top: 400px; }
+
+/* Page explainer */
+.page-explainer { color: #d0d0d0; text-align: center; margin-top: 0.5rem; }
+
+@media (max-width: 700px) {
+  .flow-box.main { min-width: 200px; }
+  .offers-grid { gap: 1rem 1.25rem; }
+}
